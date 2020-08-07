@@ -66,7 +66,6 @@ Things you may want to cover:
 |Column|Type|Option|
 |------|----|------|
 |name|string|null: false|
-|user_id|integer|foreign_kye: true|
 
 ### Association
 - has_many :users, through:  :groups_users
