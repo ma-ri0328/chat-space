@@ -1,0 +1,31 @@
+.MainChat
+  .MainHeader
+    .MainHeader__group
+      .MainHeader__GroupName test 
+      %ul.MainHeader__MemberList 
+        Member:
+        %li.MainHeader__Member masa
+    =link_to "#", class: "MainHeader__EditButtun" do
+      Edit
+  .MessageField
+    .MessageField__list
+      .MessageField__info
+        .MessageField__UserName masa
+        .MessageField__date 2020/08/14(Fri) 10:00:00
+      .MessageField__message おはよう
+
+      .MessageField__list
+      .MessageField__info
+        .MessageField__UserName masa
+        .MessageField__date 2020/08/14(Fri) 10:00:00d
+      .MessageField__message 今日は雨
+  .MessageForm
+    =form_with url: "/messages", method: :post, class: "MessageForm__form", local: true do |f|
+      .MessageForm__MessageBox
+        = f.text_field :content, placeholder: 'type a message', class: "MessageForm__content"
+        = f.label :image, class: "MessageForm__image" do
+          = icon('fas', 'image', class: "icon")
+          = f.file_field :image, class: "hidden"
+      = f.submit 'SEND', class: "MessageForm__send"
+          
+ 
