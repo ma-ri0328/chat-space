@@ -1,13 +1,14 @@
 .SideBar
   .SideHeader
     .SideHeader__user 
-      %h1.SideHeader__name masa 
+      %h1.SideHeader__name 
+        = current_user.name
       %ul.SideHeader__IconList
         %li
-          = link_to "#", class: "SideHeader__icon" do
+          = link_to "/users/edit", class: "SideHeader__icon" do
             = icon('fas', 'edit')
         %li
-          = link_to "#", class: "SideHeader__icon" do
+          = link_to edit_user_path(current_user), class: "SideHeader__icon" do
             = icon('fas', 'cog')
 
   .groups
