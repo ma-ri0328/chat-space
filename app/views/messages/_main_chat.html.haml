@@ -1,26 +1,20 @@
 .MainChat
   .MainHeader
     .MainHeader__group
-      .MainHeader__GroupName test 
+      .MainHeader__GroupName 
+        = @group.name
       %ul.MainHeader__MemberList 
         Member:
-        %li.MainHeader__Member masa
-    =link_to "#", class: "MainHeader__EditButtun" do
+        %li.MainHeader__Member 
+          - @group.users.each do |user|
+            = user.name
+    = link_to edit_group_path(@group.id), class: "MainHeader__EditButtun" do
       Edit
   .MessageField
-    .MessageField__list
-      .MessageField__info
-        .MessageField__UserName masa
-        .MessageField__date 2020/08/14(Fri) 10:00:00
-      .MessageField__message おはよう
-
-      .MessageField__list
-      .MessageField__info
-        .MessageField__UserName masa
-        .MessageField__date 2020/08/14(Fri) 10:00:00d
-      .MessageField__message 今日は雨
+    = render @messages
+    
   .MessageForm
-    =form_with url: "/messages", method: :post, class: "MessageForm__form", local: true do |f|
+    =form_with model: [@group, @message], method: :post, class: "MessageForm__form", local: true do |f|
       .MessageForm__MessageBox
         = f.text_field :content, placeholder: 'type a message', class: "MessageForm__content"
         = f.label :image, class: "MessageForm__image" do
